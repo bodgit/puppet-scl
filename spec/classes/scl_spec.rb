@@ -34,8 +34,7 @@ describe 'scl' do
 
       case facts[:os]['name']
       when 'CentOS'
-        it { is_expected.to contain_package('centos-release-scl-rh') }
-        it { is_expected.to contain_package('centos-release-scl') }
+        it { is_expected.to contain_file('/etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo') }
         it { is_expected.to contain_yumrepo('centos-sclo-rh-debuginfo') }
         it { is_expected.to contain_yumrepo('centos-sclo-rh-source') }
         it { is_expected.to contain_yumrepo('centos-sclo-rh-testing') }

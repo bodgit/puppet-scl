@@ -4,6 +4,8 @@
 #   include ::yum
 #   include ::scl
 #
+# @param gpgkeys
+# @param manage_gpgkeys
 # @param package_name
 # @param repos
 #
@@ -11,8 +13,10 @@
 #
 # @since 1.0.0
 class scl (
-  Variant[String, Array[String, 1]] $package_name = $::scl::params::package_name,
-  Hash[String, Hash[String, Any]]   $repos        = $::scl::params::repos,
+  Hash[Stdlib::Absolutepath, String] $gpgkeys        = $::scl::params::gpgkeys,
+  Boolean                            $manage_gpgkeys = $::scl::params::manage_gpgkeys,
+  String                             $package_name   = $::scl::params::package_name,
+  Hash[String, Hash[String, Any]]    $repos          = $::scl::params::repos,
 ) inherits ::scl::params {
 
   contain ::scl::install

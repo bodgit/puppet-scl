@@ -3,14 +3,15 @@ class scl::params {
 
   case $::facts['os']['family'] {
     'RedHat': {
+      $package_name = 'scl-utils'
+
       case $::facts['os']['name'] {
         'CentOS': {
-          $package_name = [
-            'scl-utils',
-            'centos-release-scl',
-            'centos-release-scl-rh',
-          ]
-          $repos        = {
+          $gpgkeys        = {
+            '/etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo' => file("${module_name}/RPM-GPG-KEY-CentOS-SIG-SCLo"),
+          }
+          $manage_gpgkeys = true
+          $repos          = {
             'centos-sclo-sclo'           => {
               'ensure'   => 'present',
               'baseurl'  => "http://mirror.centos.org/centos/${::facts['os']['release']['major']}/sclo/\$basearch/sclo/",
@@ -78,8 +79,9 @@ class scl::params {
           }
         }
         default: {
-          $package_name = 'scl-utils'
-          $repos        = {} # FIXME
+          $gpgkeys        = {} # FIXME
+          $manage_gpgkeys = false
+          $repos          = {} # FIXME
         }
       }
     }
