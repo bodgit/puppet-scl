@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe 'scl' do
 
-  let(:pre_condition) do
-    'include ::yum'
-  end
-
   context 'on unsupported distributions' do
     let(:facts) do
       {

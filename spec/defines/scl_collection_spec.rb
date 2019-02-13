@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'scl::collection' do
 
   let(:pre_condition) do
-    'include ::yum include ::scl'
+    'include ::scl'
   end
 
   let(:title) do

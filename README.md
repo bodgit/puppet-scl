@@ -32,7 +32,6 @@ In the very simplest case, you can just include the following which mimics the
 default repositories:
 
 ```puppet
-include ::yum
 include ::scl
 ```
 
@@ -41,7 +40,6 @@ include ::scl
 To install a collection and permanently enable it:
 
 ```puppet
-include ::yum
 include ::scl
 
 ::scl::collection { 'rh-git29':
