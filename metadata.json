@@ -40,7 +40,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">=4.6.0 <6.0.0"
+      "version_requirement": ">=4.6.0 <7.0.0"
     }
   ],
   "tags": [
@@ -53,8 +53,8 @@
       "version_requirement": ">=4.13.0 <5.0.0"
     },
     {
-      "name": "bodgit/yum",
-      "version_requirement": ">=1.0.0 <2.0.0"
+      "name": "puppetlabs/yumrepo_core",
+      "version_requirement": ">=1.0.2 <2.0.0"
     }
   ]
 }
