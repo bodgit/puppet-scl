@@ -17,10 +17,17 @@ class scl (
   Boolean                            $manage_gpgkeys = $::scl::params::manage_gpgkeys,
   String                             $package_name   = $::scl::params::package_name,
   Hash[String, Hash[String, Any]]    $repos          = $::scl::params::repos,
+  Hash                               $collections    = {},
 ) inherits ::scl::params {
 
   contain ::scl::install
   contain ::scl::config
 
   Class['::scl::install'] -> Class['::scl::config']
+
+  $collections.each |$key, $value| {
+    scl::collection { $key:
+      * => $value,
+    }
+  }
 }
